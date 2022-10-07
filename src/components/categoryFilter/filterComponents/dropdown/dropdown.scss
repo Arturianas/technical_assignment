@@ -1,0 +1,265 @@
+.dropSelected {
+    transition: opacity 100ms ease-in 150ms;
+
+    position: absolute;
+    // transform: translate(379px, 178px);
+    // transform: translate(0px, 178px);
+    top: 5px;
+    left: 0px;
+
+    z-index: 99999;
+    color: #192024;
+    background-color: #fff;
+    border: 1px solid #9ba8b0;
+    border-radius: 8px;
+    transition: color .2s ease-out,background-color .2s ease-out;
+
+    cursor: pointer;
+
+
+    // display: table;
+    // position: absolute;
+    left: 0;
+    top: 110%;
+    // width: 250%;
+    width: 250px;
+    // opacity: 0;
+    // z-index: 1;
+}
+
+
+// .dropdown{
+//     position: relative;
+// }
+
+
+
+.contentInsideDropdown {
+    content: "";
+    transition: background-color 200ms ease-out;
+    // position: absolute;
+    // top: 0;
+    // bottom: 0;
+    // z-index: 0;
+    background-color: transparent;
+    // left: 0;
+    // right: 0;
+    border-radius: 2px;
+}
+
+
+
+
+.dropContainer {
+    position: relative;
+}
+
+ul{
+    list-style-type: none;
+  margin: 10px 0px;
+  padding: 0;
+  
+}
+
+li{
+    // border: 2px solid black;
+    width: 100%;
+    // display: flex;
+    // justify-content: space-between;
+    cursor: pointer;
+    transition: background-color 200ms ease-out;
+
+    &:hover {
+        background-color:  #eff2f3;
+      }
+}
+
+
+.dropdownItems{
+    display: flex;
+    // border: 2px solid rgb(173, 35, 35);
+    cursor: pointer;
+}
+
+.flex{
+    display: flex;
+    // justify-content: flex-start;
+    align-items: center;
+    // border: 2px solid rgb(35, 173, 49);
+    width: 100%;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+// .justify-between {
+//     justify-content: space-between ;
+// }
+
+
+// .input{
+//     background-color: #192024;
+// }
+
+
+.dropdownImg{
+    // border: 2px solid rgb(173, 35, 35);
+    height: 100%;
+    cursor: pointer;
+}
+
+.dropdownDetails{
+    // border: 2px solid rgb(35, 42, 173);
+    display: flex;
+    // justify-content: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    // border: 2px solid rgb(35, 173, 49);
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    // margin: 0 10px;
+    margin-left: 5px;
+
+
+
+    .dropdownPrice{
+        // font-size: 12px;
+        color: #5a6872;
+    }
+}
+
+
+
+
+// input{
+//     border: 2px solid rgb(173, 35, 125);
+// }
+
+label{
+    // border: 2px solid rgb(87, 88, 23);
+    height: 100%;
+}
+
+// check box konteineris
+
+
+// input[type="checkbox"] {
+//     appearance: none;
+//     background-color: #fff;
+//     margin: 0;
+//     font: inherit;
+//     color: currentColor;
+//     width: 1.15em;
+//     height: 1.15em;
+//     border: 0.15em solid currentColor;
+//     border-radius: 0.15em;
+//     transform: translateY(-0.075em);
+//   }
+  
+
+
+// input[type="checkbox"]::before {
+//     /* ...existing styles */
+  
+//     transform-origin: bottom left;
+//     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+//   }
+
+
+//   input[type="checkbox"]:focus {
+//     outline: max(2px, 0.15em) solid currentColor;
+//     outline-offset: max(2px, 0.15em);
+//   }
+
+
+
+
+
+
+input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    appearance: none;
+    /* For iOS < 15 */
+    background-color: #fff;
+    /* Not removed via appearance */
+    margin: 0;
+  
+    font: inherit;
+    // color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.04em solid #5a6872;
+    border-radius: 0.2em;
+    transform: translateY(-0.075em);
+  
+    display: grid;
+    place-content: center;
+  }
+  
+
+
+
+
+  input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* Windows High Contrast Mode */
+    background-color: rgb(33, 146, 211);
+  }
+  
+
+
+
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+  
+
+
+
+
+  input[type="checkbox"]:focus {
+    // outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+  }
+
+
+  .no-margin-right{
+    margin-right: 0px !important;
+  }
+
+
+.dropMore{
+  flex-wrap: nowrap;
+}
+
+
+  .moreText{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+
+
+  .clickedSelect{
+    width: 100px !important;
+  }
+
+
+  .reset{
+    position: absolute;
+    top: -50%;
+    right: 0;
+    color: rgb(25, 140, 193);
+
+    cursor: pointer;
+  }
