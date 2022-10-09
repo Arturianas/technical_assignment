@@ -1,6 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { useState } from 'react';
 import './dropdown.scss'
+
+
+import {addCarType, removeCarType, resetTypes} from '../../../../context/typesActions'
+import {TypesContext} from '../../../../context/typesContext'
+
 
 
 const dropdownItems = [
@@ -30,6 +35,9 @@ const dropdownItems = [
 
 const Dropdown = () => {
 
+
+  const {selectedTypes, dispatch} = useContext(TypesContext)
+  
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -112,7 +120,19 @@ const Dropdown = () => {
     setCheckedState(
       new Array(dropdownItems.length).fill(false)
     )
+    
   }
+
+
+  const resetAll = (e) => {
+    e.preventDefault()
+   
+    resetDropdown(e)
+
+    dispatch(resetTypes())
+    
+  }
+
 
   return (
     // <div className='dropdown'>
@@ -127,7 +147,8 @@ const Dropdown = () => {
 
     <div className='dropContainer' ref={moreDropdown}>
 
-      <span className='reset'>Reset</span>
+      {/* <span onClick={(e) => resetAll(e)} className='reset'>Reset</span> */}
+      {(selectedCars.length >= 1 || selectedTypes.length >= 1) && <span onClick={(e) => resetAll(e)} className='reset'>Reset</span>}
 
         <div onClick={() => setIsOpen(!isOpen)} className={`dropdown ${(isOpen || selectedCars.length >= 1) && 'clicked'} ${selectedCars.length >= 1 && 'clickedSelect'}`} >
         <div className={`dropContent ${(isOpen || selectedCars.length >= 1) && 'catNameWhite'}`}>
