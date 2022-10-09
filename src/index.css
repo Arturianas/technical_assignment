@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.tasks {
+  border-bottom: 1px solid black;
+  padding: 20px 0px;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: #ff691d;
+}
+
+
+.task{
+  cursor: pointer;
+  /* text-decoration: underline; */
+  padding: 0px 10px;
+  font-size: 21px;
+  color: #fff;
+}

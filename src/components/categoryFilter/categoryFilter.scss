@@ -1,90 +1,26 @@
 .categoryFilter {
-
     display: flex;
-
     flex-direction: column;
     margin-left: 50px;
 
 
+
     .carType{
-        // display: flex;
-        // justify-content: space-between;
         margin-bottom: 20px;
     }
 
     .filter {
-        // border: 2px solid green;
         display: flex;
-    
     
         .category {
             display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    // position: relative;
-    // min-width: 86px;
-    cursor: pointer;
-    // font-family: 'TT Hoves Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    // line-height: 18px;
-    height: 56px;
-    min-height: 100%;
-    margin-bottom: 10px;
-    margin-right: 4px;
-    padding: 0 15px;
-    color: #192024;
-    background-color: #fff;
-    border: 1px solid #9ba8b0;
-    border-radius: 4px;
-    transition: color .2s ease-out,background-color .2s ease-out;
-
-    // position: relative;
-
-    &:hover {
-        border: 1px solid #383838;
-      }
-
-
-     
-
-
-    .catContent {
-        // border: 2px dashed blue;
-        // margin-top: 5px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        
-
-        .catName {
-            // font-family: 'TT Hoves Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
-            font-weight: 600;
-            font-size: 14px;
-            margin: 0 20px;
-        }
-        
-    }
-        }
-
-
-
-
-        .dropdown{
-            // position: relative;
-            display: flex;
-            // flex-flow: column nowrap;
-            // align-items: center;
-            // justify-content: center;
-            // position: relative;
-            // min-width: 86px;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             // font-family: 'TT Hoves Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
             font-weight: 600;
             font-size: 12px;
-            // line-height: 18px;
             height: 56px;
             min-height: 100%;
             margin-bottom: 10px;
@@ -95,55 +31,91 @@
             border: 1px solid #9ba8b0;
             border-radius: 4px;
             transition: color .2s ease-out,background-color .2s ease-out;
+
+
+        &:hover {
+            border: 1px solid #383838;
+        }
+
+
+            .catContent {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                
+
+                .catName {
+                    // font-family: 'TT Hoves Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+                    font-weight: 600;
+                    font-size: 14px;
+                    margin: 0 20px;
+                } 
+            }
+        }
+
+
+
+
+        .dropdown{
+            display: flex;
+            cursor: pointer;
+            // font-family: 'TT Hoves Variable',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            height: 56px;
+            min-height: 100%;
+            margin-bottom: 10px;
+            margin-right: 4px;
+            padding: 0 15px;
+            color: #192024;
+            background-color: #fff;
+            border: 1px solid #9ba8b0;
+            border-radius: 4px;
+            transition: color .2s ease-out,background-color .2s ease-out;
+            width: 60px;
         
             &:hover {
                 border: 1px solid #383838;
               }
-    width: 60px;
 
 
-    .dropContent {
-        display: flex;
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        height: 100%;
+                .dropContent {
+                    display: flex;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    height: 100%;
 
 
-        .dropMore{
-            font-weight: 600;
-            font-size: 14px;
-            // margin: 0 20px;
-        }
+                    .dropMore{
+                        font-weight: 600;
+                        font-size: 14px;
+                    }
 
 
-        .arrow {
-            width: 21px;
-            height: 21px;
-        }
-    }
-
-    
+                    .arrow {
+                        width: 21px;
+                        height: 21px;
+                    }
+                }
         }
 
 
 
     img {
         width: 56px;
-    height: 44px;
+        height: 44px;
     }
 
-    // h1{
-    //     color: #e1980f;
-    // }
 
     }
 }
 
 
-// .flex{
-//     display: flex;
-//     border: 2px solid black;
-//     width: 60px;
-// }
+
+
+h1{
+    margin-left: 50px;
+}

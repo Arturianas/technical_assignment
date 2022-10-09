@@ -1,0 +1,23 @@
+.numbers{
+    // border: 2px solid black;
+    margin-top: 50px;
+
+
+    .span{
+        margin: 10px 0px;
+    }
+
+    .numberContainer{
+        margin-left: 50px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    input[type=number] {
+        width: 40%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+      }
+}
+

@@ -1,9 +1,7 @@
+import './dropdown.scss'
 import { useContext, useEffect, useRef } from 'react';
 import { useState } from 'react';
-import './dropdown.scss'
-
-
-import {addCarType, removeCarType, resetTypes} from '../../../../context/typesActions'
+import {resetTypes} from '../../../../context/typesActions'
 import {TypesContext} from '../../../../context/typesContext'
 
 
@@ -37,13 +35,16 @@ const Dropdown = () => {
 
 
   const {selectedTypes, dispatch} = useContext(TypesContext)
-  
-
   const [isOpen, setIsOpen] = useState(false)
-
   const [selectedCars, setSelectedCars] = useState([]);
+  const [checkedState, setCheckedState] = useState(
+    new Array(dropdownItems.length).fill(false)
+  );
+
+  let moreDropdown = useRef();
 
 
+  
   const handleSelect = (e, position) => {
     const checked = e.target.checked;
     const value = e.target.value;
@@ -54,7 +55,9 @@ const Dropdown = () => {
     );
 
 
-    const updatedCheckedState = checkedState.map((item, index) =>
+
+
+  const updatedCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
     );
 
@@ -62,55 +65,24 @@ const Dropdown = () => {
   };
 
 
-  const [checkedState, setCheckedState] = useState(
-    new Array(dropdownItems.length).fill(false)
-  );
 
-  // const [total, setTotal] = useState(0);
-
-  const handleOnChange = (position) => {
-    const updatedCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
-    );
-
-    // setCheckedState(updatedCheckedState);
-
-    // const totalPrice = updatedCheckedState.reduce(
-    //   (sum, currentState, index) => {
-    //     if (currentState === true) {
-    //       return sum + toppings[index].price;
-    //     }
-    //     return sum;
-    //   },
-    //   0
-    // );
-
-    // setTotal(totalPrice);
-  };
-
-  // const [open, setOpen] = useState(false);
-
-  let moreDropdown = useRef();
-
+ 
+// 
   useEffect(() => {
     let handler = (e)=>{
-      // e.preventDefault()
+      e.preventDefault()
       if(!moreDropdown.current.contains(e.target)){
         setIsOpen(false);
-        // console.log(moreDropdown.current);
       }      
     };
-
     document.addEventListener("mousedown", handler);
     
-
     return() =>{
       document.removeEventListener("mousedown", handler);
     }
-
   }, []);
 
-  console.log(selectedCars)
+
 
 
 
@@ -120,125 +92,81 @@ const Dropdown = () => {
     setCheckedState(
       new Array(dropdownItems.length).fill(false)
     )
-    
   }
 
 
   const resetAll = (e) => {
     e.preventDefault()
-   
     resetDropdown(e)
-
     dispatch(resetTypes())
-    
   }
 
 
   return (
-    // <div className='dropdown'>
-    //     <div className='dropContent'>
-    //         <span className='dropMore'>More</span>
-    //         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="arrow">
-    //              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-    //         </svg>
-    //     </div>
-
-    // </div>
-
     <div className='dropContainer' ref={moreDropdown}>
 
-      {/* <span onClick={(e) => resetAll(e)} className='reset'>Reset</span> */}
       {(selectedCars.length >= 1 || selectedTypes.length >= 1) && <span onClick={(e) => resetAll(e)} className='reset'>Reset</span>}
 
         <div onClick={() => setIsOpen(!isOpen)} className={`dropdown ${(isOpen || selectedCars.length >= 1) && 'clicked'} ${selectedCars.length >= 1 && 'clickedSelect'}`} >
-        <div className={`dropContent ${(isOpen || selectedCars.length >= 1) && 'catNameWhite'}`}>
-            {/* <span className='dropMore'>More</span> */}
+          <div className={`dropContent ${(isOpen || selectedCars.length >= 1) && 'catNameWhite'}`}>
 
-
-          <div className='moreText'>
-            <span className='dropMore'>More</span>
-            {selectedCars.length > 0 && (
-              <span className='dropMore'>{selectedCars.length === 1 ? selectedCars[0] : `${selectedCars.length} selected`}</span>
-            )}
-            {/* <span className='dropMore'>Pickup truck</span> */}
-          </div>
+            <div className='moreText'>
+              <span className='dropMore'>More</span>
+              {selectedCars.length > 0 && (
+                <span className='dropMore'>{selectedCars.length === 1 ? selectedCars[0] : `${selectedCars.length} selected`}</span>
+              )}
+            </div>
 
             {(isOpen || selectedCars.length >= 1)? (
               <>
                 {selectedCars.length >= 1 ? (
-                <svg onClick={resetDropdown} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="arrow">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="arrow">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-            </svg>
-              )}
+                  <svg onClick={resetDropdown} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="arrow">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="arrow">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                  </svg>
+                )}
               </>
-              
-            
             ) : (
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="arrow">
                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-            </svg>
+              </svg>
             )}
-            
+          </div>
         </div>
-
-        </div>
-
-
-
-
 
         {isOpen && (
           <div className='dropSelected' >
-          {/* <div className='contentInsideDropdown'>
-              content
-          </div> */}
            <ul className="toppings-list">
-      {dropdownItems.map(({ type, price, carImg }, index) => {
-        return (
-          <li key={index}>
-            <div className="dropdownItems">
-              <div className=" flex">
-                <input
-                  // type="checkbox"
-                  id={type}
-                  // name={type}
-                  // value={type}
-                  checked={checkedState[index]}
-                  // onChange={() => handleOnChange(index)}
-
-                  type="checkbox"
-                    value={type}
-                    onChange={(e) => handleSelect(e, index)}
-                />
-                <label className='flex no-margin-right' htmlFor={type}>
-                  <img src={carImg} alt={type} className='dropdownImg'/>
-                  <div className='dropdownDetails'>
-                    <span>{type}</span>
-                    <span className='dropdownPrice'>${price}</span>
+            {dropdownItems.map(({ type, price, carImg }, index) => {
+              return (
+                <li key={index}>
+                  <div className="dropdownItems">
+                    <div className=" flex">
+                      <input
+                        id={type}
+                        name={type}
+                        checked={checkedState[index]}
+                        type="checkbox"
+                        value={type}
+                        onChange={(e) => handleSelect(e, index)}
+                      />
+                      <label className='flex no-margin-right' htmlFor={type}>
+                        <img src={carImg} alt={type} className='dropdownImg'/>
+                        <div className='dropdownDetails'>
+                          <span>{type}</span>
+                          <span className='dropdownPrice'>${price}</span>
+                        </div>
+                      </label>
+                    </div>
                   </div>
-                </label>
-
-                  {/* <label>{type}</label>
-                  <input
-                    type="checkbox"
-                    value={type}
-                    onChange={handleSelect}
-                    // disabled={!isAvailable(roomNumber)}
-                  /> */}
-              </div>
-              {/* <div className="right-section">{getFormattedPrice(price)}</div> */}
-            </div>
-          </li>
-        );
-      })}
-      
-    </ul>
-      </div>
+                </li>
+              );
+            })}
+           </ul>
+          </div>
         )}
     </div>
   )
